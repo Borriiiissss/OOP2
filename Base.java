@@ -1,6 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
-public abstract class Base {
+public abstract class Base implements BaseInterface {
     private int attack;
     private int protection;
     private int shoot;
@@ -12,6 +13,7 @@ public abstract class Base {
     private String name;
     private static int idCounter;
     private int playerID;
+    protected ArrayList<Base> group;
 
     public Base(int attack, int protection, int shoot, int[] damage, double health, int speed, boolean delivery, boolean magic, String name) {
         this.attack = attack;
@@ -24,6 +26,9 @@ public abstract class Base {
         this.magic = magic;
         this.name = name;
         playerID = idCounter++;
+    }
+    public int[] getDamage(){
+        return damage;
     }
 
     public int getPlayerID() {
@@ -118,5 +123,15 @@ public abstract class Base {
                 ", delivery=" + delivery +
                 ", magic=" + magic +
                 ", name=" + name;
+    }
+
+    @Override
+    public String getInfo(){
+        return "null";
+    }
+
+    @Override
+    public void step(ArrayList<Base> group){
+
     }
 }
